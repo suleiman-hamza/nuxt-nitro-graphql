@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['nitro-graphql/nuxt'],
   nitro: {
+    modules: ['nitro-graphql'],
     graphql: {
       framework: 'graphql-yoga', // or 'apollo-server'
     },

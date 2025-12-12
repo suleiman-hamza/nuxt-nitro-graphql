@@ -1,0 +1,19 @@
+scalar DateTime
+scalar JSON
+
+type Query {
+  hello: String!
+  greeting(name: String!): String!
+  # Protected field that requires authentication
+  profile: User @auth
+  # Admin-only field
+  adminData: String @auth(requires: "ADMIN")
+}
+
+type Mutation {
+  createUser(
+    name: String! @validate(minLength: 2, maxLength: 50)
+    email: String! @validate(pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
+    age: Int! @validate(min: 18, max: 100)
+  ): User
+}
